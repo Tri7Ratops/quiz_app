@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'config/routes.dart';
 import 'config/theme.dart';
-
 import 'screens/home/home.dart';
 
 class QuizApp extends StatelessWidget {

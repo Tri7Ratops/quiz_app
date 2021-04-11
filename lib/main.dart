@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quizz_app/config/routes.dart';
-import 'package:quizz_app/config/theme.dart';
 
 import 'app.dart';
 
