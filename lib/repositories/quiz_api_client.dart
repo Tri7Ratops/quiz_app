@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:quizz_app/config/config.dart';
-import 'package:quizz_app/models/models.dart';
+import 'package:quiz_app/config/config.dart';
+import 'package:quiz_app/models/models.dart';
 
 
 class QuizApiClient {

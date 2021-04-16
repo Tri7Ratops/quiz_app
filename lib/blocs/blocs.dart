@@ -1,1 +1,1 @@
-export 'quiz_bloc/quiz_bloc.dart';
+export 'quiz_bloc/bloc.dart';

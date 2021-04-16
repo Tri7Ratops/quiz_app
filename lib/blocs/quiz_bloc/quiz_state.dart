@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:quizz_app/models/models.dart';
+import 'package:quiz_app/models/models.dart';
 
 abstract class QuizState extends Equatable {
   const QuizState();

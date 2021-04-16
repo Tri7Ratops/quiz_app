@@ -1,5 +1,5 @@
-import 'package:quizz_app/models/models.dart';
-import 'package:quizz_app/repositories/quiz_api_client.dart';
+import 'package:quiz_app/models/models.dart';
+import 'package:quiz_app/repositories/quiz_api_client.dart';
 
 class QuizRepository {
   final QuizApiClient quizApiClient;
