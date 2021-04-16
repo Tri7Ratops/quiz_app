@@ -14,6 +14,8 @@ class Question extends Equatable {
   final String category;
   final String difficulty;
 
+  final bool userCorrectAnswer = false;
+
   const Question({
     required this.id,
     required this.question,

@@ -3,6 +3,9 @@ import 'package:quizz_app/models/models.dart';
 
 abstract class QuizEvent extends Equatable {
   const QuizEvent();
+
+  @override
+  List<Object?> get props => [];
 }
 
 class QuizRequested extends QuizEvent {
@@ -20,32 +23,37 @@ class QuizRequested extends QuizEvent {
 
 class QuizAnswered extends QuizEvent {
   final int answer; // Answer choose (1 to 7)
-  final Question question;
+  final List<Question> quiz;
+  final int currentQuestion;
 
   const QuizAnswered({
     required this.answer,
-    required this.question,
+    required this.quiz,
+    required this.currentQuestion,
   });
 
   @override
   List<Object?> get props => [
         answer,
-        question,
+        currentQuestion,
+        quiz,
       ];
 }
 
 class QuizNext extends Equatable {
-  final int currentStep;
+  final int currentQuestion;
   final List<Question> quiz;
 
   const QuizNext({
-    required this.currentStep,
+    required this.currentQuestion,
     required this.quiz,
   });
 
   @override
   List<Object?> get props => [
-    this.currentStep,
-    this.quiz,
-  ];
+        this.currentQuestion,
+        this.quiz,
+      ];
 }
+
+class QuizDone extends QuizEvent {}
