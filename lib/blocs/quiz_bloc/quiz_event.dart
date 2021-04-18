@@ -40,7 +40,7 @@ class QuizAnswered extends QuizEvent {
       ];
 }
 
-class QuizNext extends Equatable {
+class QuizNext extends QuizEvent {
   final int currentQuestion;
   final List<Question> quiz;
 

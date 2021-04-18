@@ -14,6 +14,8 @@ class QuizLoadInProgress extends QuizState {}
 
 class QuizLoadFailure extends QuizState {}
 
+class QuizNoMoreQuestion extends QuizState {}
+
 class QuizCurrentQuestion extends QuizState {
   final List<Question> quiz;
   final int currentQuestion;
