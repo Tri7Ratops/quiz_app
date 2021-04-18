@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_app/repositories/quiz_repository.dart';
 
 import 'config/routes.dart';
 import 'config/theme.dart';
 import 'screens/home/home.dart';
 
 class QuizApp extends StatelessWidget {
+  final QuizRepository quizRepository;
+
+  QuizApp({required this.quizRepository});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +18,7 @@ class QuizApp extends StatelessWidget {
       theme: mainTheme,
       initialRoute: Routes.home,
       routes: {
-        Routes.home: (context) => HomeScreen(),
+        Routes.home: (context) => HomeScreen(quizRepository: quizRepository),
       },
     );
   }
