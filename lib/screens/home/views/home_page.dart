@@ -5,9 +5,13 @@ import '../widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   final List<MenuItemModel> itemList = [
-    MenuItemModel(name: "Linux", category: "Linux", imgPath: "assets/oskar-yildiz-cOkpTiJMGzA-unsplash.jpg"),
-    MenuItemModel(name: "DevOps", category: "DevOps", imgPath: "assets/oskar-yildiz-cOkpTiJMGzA-unsplash.jpg"),
-    MenuItemModel(name: "Networking", category: "Networking", imgPath: "assets/oskar-yildiz-cOkpTiJMGzA-unsplash.jpg"),
+    MenuItemModel(name: "General", category: null, imgPath: "assets/museums-victoria-jc_WMrSJ8EY-unsplash.jpg"),
+    MenuItemModel(name: "Linux", category: "Linux", imgPath: "assets/long-ma-dXQHxSt2ShM-unsplash.jpg"),
+    MenuItemModel(name: "DevOps", category: "DevOps", imgPath: "assets/ian-battaglia-9drS5E_Rguc-unsplash.jpg"),
+    MenuItemModel(name: "Networking", category: "Networking", imgPath: "assets/bert-brrr-rhNff6hB41s-unsplash.jpg"), 
+    MenuItemModel(name: "Programming", category: "Programming", imgPath: "assets/oskar-yildiz-cOkpTiJMGzA-unsplash.jpg"), 
+    MenuItemModel(name: "Cloud", category: "Cloud", imgPath: "assets/ibrahim-mushan-uNnUdZILKB0-unsplash.jpg"),
+    MenuItemModel(name: "Docker", category: "Docker", imgPath: "assets/david-maunsell-PMdNsBzn2To-unsplash.jpg"),
   ];
 
   @override

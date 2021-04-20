@@ -18,9 +18,12 @@ class HomeScreen extends StatelessWidget {
       create: (context) => QuizBloc(quizRepository: quizRepository),
       child: SafeArea(
         child: Scaffold(
-          body: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
-            child: HomePage(),
+          body: Scrollbar(
+            isAlwaysShown: true,
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(20),
+              child: HomePage(),
+            ),
           ),
         ),
       ),
