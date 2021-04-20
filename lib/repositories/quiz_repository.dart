@@ -8,8 +8,8 @@ class QuizRepository {
     required this.quizApiClient,
   });
 
-  Future<List<Question>> getQuiz({String? category, int limit = 10}) async {
-    List<Question> quiz = [];
+  Future<List<QuestionModel>> getQuiz({String? category, int limit = 10}) async {
+    List<QuestionModel> quiz = [];
 
     if (category != null) {
       quiz = await quizApiClient.fetchQuizCategory(category: category, limit: limit);

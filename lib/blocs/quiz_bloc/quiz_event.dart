@@ -22,8 +22,8 @@ class QuizRequested extends QuizEvent {
 }
 
 class QuizAnswered extends QuizEvent {
-  final int answer; // Answer choose (1 to 7)
-  final List<Question> quiz;
+  final List<int> answer; // Answer choose (1 to 7)
+  final List<QuestionModel> quiz;
   final int currentQuestion;
 
   const QuizAnswered({
@@ -42,7 +42,7 @@ class QuizAnswered extends QuizEvent {
 
 class QuizNext extends QuizEvent {
   final int currentQuestion;
-  final List<Question> quiz;
+  final List<QuestionModel> quiz;
 
   const QuizNext({
     required this.currentQuestion,

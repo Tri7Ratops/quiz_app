@@ -1,22 +1,22 @@
 import 'package:equatable/equatable.dart';
 
-class Question extends Equatable {
+class QuestionModel extends Equatable {
   final int id;
   final String question;
   final String? description;
 
-  final Map<String, String?> answers;
-  final Map<String, String?> correctAnswers;
+  final Map<String, dynamic?> answers;
+  final Map<String, dynamic?> correctAnswers;
   final bool multipleCorrectAnswers;
 
   final String? explanation;
-  final List<Map<String, String>> tags;
+  final List<dynamic> tags;
   final String category;
   final String difficulty;
 
   final bool userCorrectAnswer = false;
 
-  const Question({
+  const QuestionModel({
     required this.id,
     required this.question,
     this.description,
@@ -43,14 +43,14 @@ class Question extends Equatable {
         difficulty,
       ];
 
-  static Question fromJson(dynamic json) {
-    return Question(
+  static QuestionModel fromJson(dynamic json) {
+    return QuestionModel(
       id: json['id'],
       question: json['question'],
       description: json['description'],
       answers: json['answers'],
       correctAnswers: json['correct_answers'],
-      multipleCorrectAnswers: json['multiple_correct_answers'],
+      multipleCorrectAnswers: json['multiple_correct_answers'].toLowerCase() == 'true',
       explanation: json['explanation'],
       tags: json['tags'],
       category: json['category'],

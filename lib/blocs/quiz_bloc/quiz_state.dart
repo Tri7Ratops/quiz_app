@@ -17,7 +17,7 @@ class QuizLoadFailure extends QuizState {}
 class QuizNoMoreQuestion extends QuizState {}
 
 class QuizCurrentQuestion extends QuizState {
-  final List<Question> quiz;
+  final List<QuestionModel> quiz;
   final int currentQuestion;
 
   const QuizCurrentQuestion({
@@ -33,7 +33,7 @@ class QuizCurrentQuestion extends QuizState {
 }
 
 class QuizAnswer extends QuizState {
-  final List<Question> quiz;
+  final List<QuestionModel> quiz;
   final int currentQuestion;
 
   const QuizAnswer({

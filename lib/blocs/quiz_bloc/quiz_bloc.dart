@@ -27,7 +27,7 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   Stream<QuizState> _quizRequested(QuizRequested event) async* {
     yield QuizLoadInProgress();
     try {
-      final List<Question> quiz = await this.quizRepository.getQuiz(category: event.category);
+      final List<QuestionModel> quiz = await this.quizRepository.getQuiz(category: event.category);
       yield QuizCurrentQuestion(quiz: quiz, currentQuestion: 0);
     } catch (e) {
       print(e);
@@ -36,7 +36,7 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   }
 
   Stream<QuizState> _quizAnswered(QuizAnswered event) async* {
-    Question question = event.quiz.elementAt(event.currentQuestion);
+    QuestionModel question = event.quiz.elementAt(event.currentQuestion);
 
     // TODO: Check if the answer is correct
 
