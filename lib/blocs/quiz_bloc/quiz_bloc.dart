@@ -4,9 +4,9 @@ import 'bloc.dart';
 import 'package:quiz_app/repositories/repositories.dart';
 
 class QuizBloc extends Bloc<QuizEvent, QuizState> {
-  final QuizRepository quizRepository;
+  final QuizRepository? quizRepository;
 
-  QuizBloc({required this.quizRepository}) : super(QuizInitial());
+  QuizBloc({this.quizRepository}) : super(QuizInitial());
 
   @override
   Stream<QuizState> mapEventToState(QuizEvent event) async* {
@@ -27,7 +27,10 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   Stream<QuizState> _quizRequested(QuizRequested event) async* {
     yield QuizLoadInProgress();
     try {
-      final List<QuestionModel> quiz = await this.quizRepository.getQuiz(category: event.category);
+      if (quizRepository == null) {
+        throw ("ERROR: quizRepository is null");
+      }
+      final List<QuestionModel> quiz = await this.quizRepository!.getQuiz(category: event.category);
       yield QuizCurrentQuestion(quiz: quiz, currentQuestion: 0);
     } catch (e) {
       print(e);

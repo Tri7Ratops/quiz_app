@@ -5,6 +5,7 @@ import 'package:quiz_app/repositories/quiz_repository.dart';
 import 'config/routes.dart';
 import 'config/theme.dart';
 import 'screens/home/home.dart';
+import 'screens/quiz/quiz.dart';
 
 class QuizApp extends StatelessWidget {
   final QuizRepository quizRepository;
@@ -19,6 +20,7 @@ class QuizApp extends StatelessWidget {
       initialRoute: Routes.home,
       routes: {
         Routes.home: (context) => HomeScreen(quizRepository: quizRepository),
+        Routes.quiz: (context) => QuizScreen(),
       },
     );
   }
