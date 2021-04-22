@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:quiz_app/repositories/quiz_repository.dart';
 
 import 'config/routes.dart';
@@ -18,6 +19,7 @@ class QuizApp extends StatelessWidget {
       title: 'Quiz App',
       theme: mainTheme,
       initialRoute: Routes.home,
+      builder: EasyLoading.init(),
       routes: {
         Routes.home: (context) => HomeScreen(quizRepository: quizRepository),
         Routes.quiz: (context) => QuizScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'bloc.dart';
 import 'package:quiz_app/repositories/repositories.dart';
@@ -26,15 +27,18 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
 
   Stream<QuizState> _quizRequested(QuizRequested event) async* {
     yield QuizLoadInProgress();
+    EasyLoading.show(status: 'Fetching the quiz ...');
     try {
       if (quizRepository == null) {
         throw ("ERROR: quizRepository is null");
       }
       final List<QuestionModel> quiz = await this.quizRepository!.getQuiz(category: event.category);
       yield QuizCurrentQuestion(quiz: quiz, currentQuestion: 0);
+      EasyLoading.dismiss();
     } catch (e) {
       print(e);
       yield QuizLoadFailure();
+      EasyLoading.showError("Can't fetch data");
     }
   }
 
