@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app/blocs/blocs.dart';
+import 'package:quiz_app/config/routes.dart';
 import 'package:quiz_app/models/menu_item_model.dart';
+import 'package:quiz_app/models/models.dart';
 
 import '../widgets/widgets.dart';
 
@@ -20,6 +22,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<QuizBloc, QuizState>(
       builder: (context, QuizState state) {
+        if (state is QuizCurrentQuestion) {
+          WidgetsBinding.instance!.addPostFrameCallback((_) {
+            Navigator.pushNamed(context, Routes.quiz, arguments: QuizScreenArguments(quiz: state.quiz));
+          });
+        }
         return Column(
           children: [
             Header(),
