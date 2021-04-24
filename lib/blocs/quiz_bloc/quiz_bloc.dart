@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:quiz_app/repositories/repositories.dart';
 
 import 'bloc.dart';
-import 'package:quiz_app/repositories/repositories.dart';
 
 class QuizBloc extends Bloc<QuizEvent, QuizState> {
   final QuizRepository? quizRepository;
