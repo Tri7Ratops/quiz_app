@@ -19,31 +19,65 @@ class QuizPage extends StatelessWidget {
         if (state is QuizAnswer) {
           _alertResultAnswer(context, state);
         }
-        // TODO: On QuizDone state, push to done page
-        // TODO: OnQuizAnswer show alert for response
+        if (state is QuizInitial) {
+          Navigator.pop(context);
+        }
       },
       builder: (context, QuizState state) {
-        QuestionModel question = (state as QuizCurrentQuestion).quiz[state.currentQuestion];
-        return Column(children: [
-          QuizHeader(question: question),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: question.answers.length,
-            itemBuilder: (context, index) {
-              if (question.answers[index] == null) return Container();
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: QuizAnswerTile(
-                  answer: question.answers[index]!,
-                  onPressed: () {
-                    BlocProvider.of<QuizBloc>(context).add(QuizAnswered(quiz: state.quiz, answer: index, currentQuestion: state.currentQuestion));
-                  },
+        if (state is QuizCurrentQuestion) {
+          QuestionModel question = state.quiz[state.currentQuestion];
+          return Column(children: [
+            QuizHeader(question: question),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: question.answers.length,
+              itemBuilder: (context, index) {
+                if (question.answers[index] == null) return Container();
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: QuizAnswerTile(
+                    answer: question.answers[index]!,
+                    onPressed: () {
+                      BlocProvider.of<QuizBloc>(context).add(QuizAnswered(quiz: state.quiz, answer: index, currentQuestion: state.currentQuestion));
+                    },
+                  ),
+                );
+              },
+            )
+          ]);
+        }
+        return Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 120,
+              ),
+              Text(
+                'Quiz done!',
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Theme.of(context).primaryColor,
                 ),
-              );
-            },
-          )
-        ]);
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              TextButton(
+                onPressed: () {
+                  BlocProvider.of<QuizBloc>(context).add(QuizDone());
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text("Back to the home page", style: TextStyle(color: Colors.white),),
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Theme.of(context).accentColor),
+                ),
+              ),
+            ],
+          ),
+        );
       },
     );
   }
