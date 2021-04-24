@@ -34,6 +34,8 @@ class QuizApiClient {
     final response = await this.httpClient.get(uri);
     List<QuestionModel> result = [];
 
+
+    print("*** FETCH DATA CATEGORY");
     if (response.statusCode != 200) {
       throw Exception('Error [QuizApiClient]: fetchQuiz');
     }

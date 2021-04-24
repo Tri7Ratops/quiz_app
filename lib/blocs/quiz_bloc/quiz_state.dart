@@ -22,7 +22,7 @@ class QuizCurrentQuestion extends QuizState {
 
   const QuizCurrentQuestion({
     required this.quiz,
-    required this.currentQuestion,
+    this.currentQuestion = 0,
   });
 
   @override

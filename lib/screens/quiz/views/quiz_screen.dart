@@ -15,7 +15,7 @@ class QuizScreen extends StatelessWidget {
     final QuizScreenArguments args = ModalRoute.of(context)!.settings.arguments as QuizScreenArguments;
 
     return BlocProvider(
-      create: (context) => QuizBloc(),
+      create: (context) => QuizBloc(state: QuizCurrentQuestion(quiz: args.quiz)),
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(

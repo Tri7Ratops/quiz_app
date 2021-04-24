@@ -20,13 +20,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<QuizBloc, QuizState>(
-      builder: (context, QuizState state) {
+    return BlocConsumer<QuizBloc, QuizState>(
+      listener: (BuildContext context, state) {
         if (state is QuizCurrentQuestion) {
           WidgetsBinding.instance!.addPostFrameCallback((_) {
             Navigator.pushNamed(context, Routes.quiz, arguments: QuizScreenArguments(quiz: state.quiz));
           });
         }
+      },
+      builder: (context, QuizState state) {
         return Column(
           children: [
             Header(),

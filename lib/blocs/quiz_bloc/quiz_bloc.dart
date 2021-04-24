@@ -7,7 +7,7 @@ import 'package:quiz_app/repositories/repositories.dart';
 class QuizBloc extends Bloc<QuizEvent, QuizState> {
   final QuizRepository? quizRepository;
 
-  QuizBloc({this.quizRepository}) : super(QuizInitial());
+  QuizBloc({this.quizRepository, QuizState? state}) : super(state ?? QuizInitial());
 
   @override
   Stream<QuizState> mapEventToState(QuizEvent event) async* {
