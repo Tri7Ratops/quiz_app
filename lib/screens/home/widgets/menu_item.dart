@@ -12,7 +12,7 @@ class MenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius:  BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(8.0),
         border: Border.all(color: Theme.of(context).accentColor, width: 2.0),
       ),
       margin: const EdgeInsets.all(8),
@@ -22,7 +22,9 @@ class MenuItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(data.imgPath),
+              child: Image(
+                image: AssetImage(data.imgPath),
+              ),
             ),
             Center(
               child: Text(

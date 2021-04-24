@@ -15,6 +15,12 @@ class QuizApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    precacheImage(AssetImage("assets/museums-victoria-jc_WMrSJ8EY-unsplash.jpg"), context);
+    precacheImage(AssetImage("assets/ian-battaglia-9drS5E_Rguc-unsplash.jpg"), context);
+    precacheImage(AssetImage("assets/bert-brrr-rhNff6hB41s-unsplash.jpg"), context);
+    precacheImage(AssetImage("assets/david-maunsell-PMdNsBzn2To-unsplash.jpg"), context);
+    precacheImage(AssetImage("assets/long-ma-dXQHxSt2ShM-unsplash.jpg"), context);
+
     return MaterialApp(
       title: 'Quiz App',
       theme: mainTheme,
