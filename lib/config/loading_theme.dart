@@ -14,8 +14,8 @@ class LoadingTheme {
       ..indicatorColor = Colors.white
       ..textColor = Colors.white
       ..maskColor = Colors.blue.withOpacity(0.5)
-      ..userInteractions = true
       ..maskType = EasyLoadingMaskType.black
+      ..userInteractions = false
       ..dismissOnTap = false;
   }
 
@@ -31,7 +31,7 @@ class LoadingTheme {
       ..indicatorColor = Colors.yellow
       ..textColor = Colors.yellow
       ..maskColor = Colors.blue.withOpacity(0.5)
-      ..userInteractions = true
+      ..userInteractions = false
       ..dismissOnTap = false;
   }
 }

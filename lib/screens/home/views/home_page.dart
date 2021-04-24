@@ -40,7 +40,6 @@ class HomePage extends StatelessWidget {
                 return MenuItem(
                   data: item,
                   onPressed: () {
-                    print("onPressed: ${item.name}");
                     BlocProvider.of<QuizBloc>(context).add(QuizRequested(category: item.category));
                   },
                 );

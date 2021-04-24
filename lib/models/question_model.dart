@@ -5,8 +5,8 @@ class QuestionModel extends Equatable {
   final String question;
   final String? description;
 
-  final Map<String, dynamic?> answers;
-  final Map<String, dynamic?> correctAnswers;
+  final List<String?> answers;
+  final List<String?> correctAnswers;
   final bool multipleCorrectAnswers;
 
   final String? explanation;
@@ -48,8 +48,22 @@ class QuestionModel extends Equatable {
       id: json['id'],
       question: json['question'],
       description: json['description'],
-      answers: json['answers'],
-      correctAnswers: json['correct_answers'],
+      answers: [
+        json['answers']['answer_a'],
+        json['answers']['answer_b'],
+        json['answers']['answer_c'],
+        json['answers']['answer_d'],
+        json['answers']['answer_e'],
+        json['answers']['answer_f'],
+      ],
+      correctAnswers: [
+        json['correct_answers']['answer_a_correct'],
+        json['correct_answers']['answer_b_correct'],
+        json['correct_answers']['answer_c_correct'],
+        json['correct_answers']['answer_d_correct'],
+        json['correct_answers']['answer_e_correct'],
+        json['correct_answers']['answer_f_correct'],
+      ],
       multipleCorrectAnswers: json['multiple_correct_answers'].toLowerCase() == 'true',
       explanation: json['explanation'],
       tags: json['tags'],
