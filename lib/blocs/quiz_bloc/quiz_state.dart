@@ -32,14 +32,14 @@ class QuizCurrentQuestion extends QuizState {
       ];
 }
 
-class QuizAnswer extends QuizState {
-  final List<QuestionModel> quiz;
-  final int currentQuestion;
-
+class QuizAnswer extends QuizCurrentQuestion {
   const QuizAnswer({
-    required this.quiz,
-    required this.currentQuestion,
-  });
+    required quiz,
+    required currentQuestion,
+  }) : super(
+          quiz: quiz,
+          currentQuestion: currentQuestion,
+        );
 
   @override
   List<Object?> get props => [
@@ -63,7 +63,7 @@ class QuizAnswerTrue extends QuizAnswer {
     required quiz,
     required currentQuestion,
   }) : super(
-    quiz: quiz,
-    currentQuestion: currentQuestion,
-  );
+          quiz: quiz,
+          currentQuestion: currentQuestion,
+        );
 }

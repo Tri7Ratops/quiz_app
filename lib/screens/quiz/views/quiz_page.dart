@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +16,9 @@ class QuizPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<QuizBloc, QuizState>(
       listener: (context, QuizState state) {
+        if (state is QuizAnswer) {
+          _alertResultAnswer(context, state);
+        }
         // TODO: On QuizDone state, push to done page
         // TODO: OnQuizAnswer show alert for response
       },
@@ -32,7 +36,9 @@ class QuizPage extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 20),
                 child: QuizAnswerTile(
                   answer: question.answers[index]!,
-                  onPressed: () {},
+                  onPressed: () {
+                    BlocProvider.of<QuizBloc>(context).add(QuizAnswered(quiz: state.quiz, answer: index, currentQuestion: state.currentQuestion));
+                  },
                 ),
               );
             },
@@ -40,5 +46,41 @@ class QuizPage extends StatelessWidget {
         ]);
       },
     );
+  }
+
+  _alertResultAnswer(BuildContext context, QuizState state) {
+    if (state is QuizAnswerTrue) {
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.SUCCES,
+        headerAnimationLoop: false,
+        dismissOnTouchOutside: false,
+        animType: AnimType.TOPSLIDE,
+        dismissOnBackKeyPress: false,
+        showCloseIcon: false,
+        title: 'Good answer!',
+        desc: state.quiz[state.currentQuestion].explanation ?? "No explanation",
+        btnOkText: "Next",
+        btnOkOnPress: () {
+          BlocProvider.of<QuizBloc>(context).add(QuizNext(quiz: state.quiz, currentQuestion: state.currentQuestion));
+        },
+      )..show();
+    } else if (state is QuizAnswerFalse) {
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.ERROR,
+        headerAnimationLoop: false,
+        dismissOnTouchOutside: false,
+        animType: AnimType.TOPSLIDE,
+        dismissOnBackKeyPress: false,
+        showCloseIcon: false,
+        title: 'Wrong answer!',
+        desc: state.quiz[state.currentQuestion].explanation ?? "No explanation",
+        btnOkText: "Next",
+        btnOkOnPress: () {
+          BlocProvider.of<QuizBloc>(context).add(QuizNext(quiz: state.quiz, currentQuestion: state.currentQuestion));
+        },
+      )..show();
+    }
   }
 }

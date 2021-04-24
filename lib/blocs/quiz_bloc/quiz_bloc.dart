@@ -45,9 +45,12 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   Stream<QuizState> _quizAnswered(QuizAnswered event) async* {
     QuestionModel question = event.quiz.elementAt(event.currentQuestion);
 
-    // TODO: Check if the answer is correct
-
-    yield QuizAnswerTrue(quiz: event.quiz, currentQuestion: event.currentQuestion);
+    if (question.correctAnswers[event.answer]) {
+      question.userCorrectAnswer = true;
+      yield QuizAnswerTrue(quiz: event.quiz, currentQuestion: event.currentQuestion);
+    } else {
+      yield QuizAnswerFalse(quiz: event.quiz, currentQuestion: event.currentQuestion);
+    }
   }
 
   Stream<QuizState> _quizNext(QuizNext event) async* {

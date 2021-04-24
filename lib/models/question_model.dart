@@ -6,7 +6,7 @@ class QuestionModel extends Equatable {
   final String? description;
 
   final List<String?> answers;
-  final List<String?> correctAnswers;
+  final List<bool> correctAnswers;
   final bool multipleCorrectAnswers;
 
   final String? explanation;
@@ -14,9 +14,9 @@ class QuestionModel extends Equatable {
   final String category;
   final String difficulty;
 
-  final bool userCorrectAnswer = false;
+  bool userCorrectAnswer = false;
 
-  const QuestionModel({
+  QuestionModel({
     required this.id,
     required this.question,
     this.description,
@@ -57,12 +57,12 @@ class QuestionModel extends Equatable {
         json['answers']['answer_f'],
       ],
       correctAnswers: [
-        json['correct_answers']['answer_a_correct'],
-        json['correct_answers']['answer_b_correct'],
-        json['correct_answers']['answer_c_correct'],
-        json['correct_answers']['answer_d_correct'],
-        json['correct_answers']['answer_e_correct'],
-        json['correct_answers']['answer_f_correct'],
+        json['correct_answers']['answer_a_correct'].toLowerCase() == 'true',
+        json['correct_answers']['answer_b_correct'].toLowerCase() == 'true',
+        json['correct_answers']['answer_c_correct'].toLowerCase() == 'true',
+        json['correct_answers']['answer_d_correct'].toLowerCase() == 'true',
+        json['correct_answers']['answer_e_correct'].toLowerCase() == 'true',
+        json['correct_answers']['answer_f_correct'].toLowerCase() == 'true',
       ],
       multipleCorrectAnswers: json['multiple_correct_answers'].toLowerCase() == 'true',
       explanation: json['explanation'],

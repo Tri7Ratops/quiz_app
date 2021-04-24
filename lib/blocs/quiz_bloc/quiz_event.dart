@@ -22,7 +22,7 @@ class QuizRequested extends QuizEvent {
 }
 
 class QuizAnswered extends QuizEvent {
-  final List<int> answer; // Answer choose (1 to 7)
+  final int answer;
   final List<QuestionModel> quiz;
   final int currentQuestion;
 
